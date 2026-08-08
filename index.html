@@ -1,225 +1,1048 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الطرق العددية الشامل</title>
-    <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      }
-    };
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Amiri', 'Traditional Arabic', 'Times New Roman', serif;
-            line-height: 1.9;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 30px 50px;
-            background: #fdfdfd;
-            color: #1a202c;
-            direction: rtl;
-            font-size: 16px;
-        }
-        .cover {
-            text-align: center;
-            padding: 80px 30px;
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
-            color: white;
-            border-radius: 20px;
-            margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            page-break-after: always;
-        }
-        .cover h1 {
-            color: white;
-            font-size: 3em;
-            border: none;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .cover h2 {
-            color: #bee3f8;
-            border: none;
-            padding: 0;
-            font-weight: normal;
-            font-size: 1.5em;
-        }
-        .cover .meta {
-            margin-top: 50px;
-            color: #e2e8f0;
-            font-size: 1.2em;
-            line-height: 2;
-        }
-        h1 {
-            color: #1a365d;
-            text-align: center;
-            border-bottom: 4px solid #2c5282;
-            padding-bottom: 20px;
-            margin-top: 60px;
-            font-size: 2.2em;
-            page-break-before: always;
-        }
-        h1:first-of-type { page-break-before: avoid; }
-        h2 {
-            color: #2c5282;
-            border-right: 6px solid #3182ce;
-            padding-right: 18px;
-            margin-top: 40px;
-            font-size: 1.6em;
-        }
-        h3 {
-            color: #2b6cb0;
-            margin-top: 30px;
-            font-size: 1.3em;
-        }
-        h4 {
-            color: #4a5568;
-            margin-top: 25px;
-            font-size: 1.15em;
-        }
-        .objectives {
-            background: linear-gradient(to left, #ebf8ff, #f0f7ff);
-            border-right: 5px solid #3182ce;
-            padding: 20px 25px;
-            border-radius: 8px;
-            margin: 25px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .objectives h3 {
-            margin-top: 0;
-            color: #2c5282;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: white;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        th {
-            background: #2c5282;
-            color: white;
-            padding: 14px;
-            text-align: right;
-            font-weight: bold;
-        }
-        td {
-            padding: 12px 14px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        tr:last-child td { border-bottom: none; }
-        tr:nth-child(even) { background: #f7fafc; }
-        .formula-box {
-            background: linear-gradient(to left, #fffaf0, #fff8e1);
-            border: 2px solid #ed8936;
-            border-radius: 10px;
-            padding: 20px 25px;
-            margin: 25px 0;
-            text-align: center;
-            font-size: 1.15em;
-            box-shadow: 0 2px 6px rgba(237,137,54,0.15);
-        }
-        .example-box {
-            background: linear-gradient(to left, #f0fff4, #e8f5e9);
-            border: 2px solid #48bb78;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 25px 0;
-            box-shadow: 0 2px 6px rgba(72,187,120,0.15);
-        }
-        .example-box h4 {
-            color: #276749;
-            margin-top: 0;
-            font-size: 1.2em;
-        }
-        .solution {
-            background: white;
-            border-right: 4px solid #48bb78;
-            padding: 18px 22px;
-            margin: 18px 0;
-            border-radius: 5px;
-        }
-        pre {
-            background: #1a202c;
-            color: #e2e8f0;
-            padding: 22px;
-            border-radius: 10px;
-            overflow-x: auto;
-            direction: ltr;
-            text-align: left;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 0.88em;
-            line-height: 1.6;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .note {
-            background: linear-gradient(to left, #fffff0, #fef5e7);
-            border-right: 5px solid #d69e2e;
-            padding: 18px 22px;
-            margin: 25px 0;
-            border-radius: 8px;
-        }
-        .toc {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            margin: 40px 0;
-            page-break-after: always;
-        }
-        .toc h2 {
-            text-align: center;
-            border: none;
-            padding: 0;
-            font-size: 2em;
-        }
-        .toc ol {
-            line-height: 2.5;
-            font-size: 1.1em;
-        }
-        .toc li {
-            padding: 5px 0;
-            border-bottom: 1px dotted #e2e8f0;
-        }
-        strong { color: #1a365d; }
-        em { color: #4a5568; }
-        code {
-            background: #edf2f7;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Consolas', monospace;
-            font-size: 0.9em;
-        }
-        .iteration-table th {
-            background: #2f855a;
-        }
-        .summary-table th {
-            background: #744210;
-        }
-        @media print {
-            body { background: white; padding: 15mm; font-size: 14px; }
-            .cover { box-shadow: none; border: 2px solid #2c5282; }
-            pre {
-                background: #f8f9fa !important;
-                color: #1a202c !important;
-                border: 1px solid #cbd5e0;
-                box-shadow: none;
-            }
-            .example-box, .objectives, .note, .formula-box {
-                box-shadow: none;
-                border: 1px solid #cbd5e0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>دليل الطرق العددية الشامل</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;line-height:1.9;max-width:900px;margin:0 auto;padding:30px 40px;background:#fff;color:#1a202c;direction:rtl;font-size:15px}
+.cover{text-align:center;padding:60px 30px;background:linear-gradient(135deg,#1a365d,#2c5282,#3182ce);color:#fff;border-radius:15px;margin:20px 0 40px;page-break-after:always}
+.cover h1{color:#fff;font-size:2.2em;margin-bottom:10px;border:none}
+.cover h2{color:#bee3f8;font-weight:normal;font-size:1.3em;border:none}
+.cover .meta{margin-top:30px;color:#e2e8f0;font-size:1.1em;line-height:2}
+h1{color:#1a365d;text-align:center;border-bottom:3px solid #2c5282;padding-bottom:15px;margin:50px 0 20px;font-size:1.8em;page-break-before:always}
+h1:first-of-type{page-break-before:avoid}
+h2{color:#2c5282;border-right:5px solid #3182ce;padding-right:15px;margin:30px 0 15px;font-size:1.4em}
+h3{color:#2b6cb0;margin:20px 0 10px;font-size:1.2em}
+h4{color:#4a5568;margin:15px 0 8px;font-size:1.1em}
+p{margin:10px 0}
+ul,ol{margin:10px 20px}
+li{margin:5px 0}
+.objectives{background:#ebf8ff;border-right:4px solid #3182ce;padding:15px 20px;border-radius:6px;margin:20px 0}
+.objectives h3{margin-top:0;color:#2c5282}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.95em}
+th{background:#2c5282;color:#fff;padding:10px;text-align:right}
+td{padding:8px 10px;border:1px solid #e2e8f0}
+tr:nth-child(even){background:#f7fafc}
+.formula{background:#fffaf0;border:2px solid #ed8936;border-radius:8px;padding:15px;margin:15px 0;text-align:center;font-size:1.1em;direction:ltr}
+.example{background:#f0fff4;border:2px solid #48bb78;border-radius:8px;padding:20px;margin:20px 0}
+.example h4{color:#276749;margin-top:0}
+.solution{background:#fff;border-right:3px solid #48bb78;padding:12px 15px;margin:10px 0}
+pre{background:#1a202c;color:#e2e8f0;padding:15px;border-radius:8px;overflow-x:auto;direction:ltr;text-align:left;font-family:Consolas,monospace;font-size:.85em;line-height:1.5;margin:15px 0}
+.note{background:#fffff0;border-right:4px solid #d69e2e;padding:15px;margin:20px 0;border-radius:6px}
+.toc{background:#f8fafc;padding:25px;border-radius:10px;margin:30px 0;page-break-after:always}
+.toc h2{text-align:center;border:none}
+.toc ol{line-height:2.2}
+.toc li{border-bottom:1px dotted #e2e8f0;padding:3px 0}
+.badge{display:inline-block;background:#2c5282;color:#fff;padding:2px 10px;border-radius:12px;font-size:.85em;margin:2px}
+@media print{body{padding:10mm;font-size:13px}.cover{page-break-after:always}h1{page-break-before:always}pre{background:#f5f5f5;color:#333;border:1px solid #ddd}}
+</style>
 </head>
 <body>
+
+<div class="cover">
+<h1>📘 دليل الطرق العددية الشامل</h1>
+<h2>Comprehensive Guide to Numerical Methods</h2>
+<div class="meta">
+<p><strong>المقرر:</strong> طرق عددية (Numerical Methods) | MAT222</p>
+<p><strong>الكلية:</strong> الهندسة - جامعة السودان للعلوم والتكنولوجيا</p>
+<p><strong>المستوى:</strong> الفصل السادس | العام 2022/2023</p>
+<p><strong>منسق المقرر:</strong> د. إبراهيم محمد إبراهيم</p>
+</div>
+</div>
+
+<div class="toc">
+<h2>📋 فهرس المحتويات</h2>
+<ol>
+<li><strong>المحاضرة 1:</strong> مقدمة في الطرق العددية والنمذجة الرياضية</li>
+<li><strong>المحاضرة 2:</strong> الأنظمة الخطية والطرق المباشرة (المصفوفة العكسية + غاوس)</li>
+<li><strong>المحاضرة 3:</strong> الطرق التكرارية (جاكوبي + غاوس-سايدل)</li>
+<li><strong>المحاضرة 4:</strong> المعادلات غير الخطية I (التنصيف + الوضع الكاذب)</li>
+<li><strong>المحاضرة 5:</strong> المعادلات غير الخطية II (نيوتن + القاطع)</li>
+<li><strong>المحاضرة 6:</strong> الاستكمال - الطريقة العامة + لا جرانج</li>
+<li><strong>المحاضرة 7:</strong> الاستكمال بطريقة لا جرانج (توسع)</li>
+<li><strong>المحاضرة 8:</strong> الاستكمال بفروق نيوتن المقسمة</li>
+<li><strong>المحاضرة 9:</strong> التفاضل العددي</li>
+<li><strong>المحاضرة 10:</strong> التكامل العددي</li>
+<li><strong>المحاضرة 11:</strong> المعادلات التفاضلية (أويلر + RK4)</li>
+</ol>
+</div>
+
+<h1>المحاضرة 1: مقدمة في الطرق العددية</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>تعريف الطرق العددية وأهميتها</li>
+<li>شرح مفهوم الخوارزمية (Algorithm)</li>
+<li>الخطوات الخمس لحل المشكلات بالحاسوب</li>
+<li>التمييز بين الحل التحليلي والعددي</li>
+<li>فهم مصادر الخطأ: القطع والتقريب</li>
+</ol>
+</div>
+
+<h2>1.1 ما هي الطرق العددية؟</h2>
+<p>الطرق العددية هي أساليب رياضية تصف حل المشكلات في خطوات متسلسلة تسمى <strong>الخوارزمية (Algorithm)</strong>. تحتوي على عمليات حسابية (جمع، طرح، ضرب، قسمة) وشروط وأوامر تُنفذ بلغة برمجة مثل MATLAB أو C++ أو FORTRAN.</p>
+
+<h3>المتطلبات السابقة:</h3>
+<ul>
+<li>مهارات رياضية أساسية</li>
+<li>التفاضل والتكامل التطبيقي (Applied Calculus)</li>
+<li>الجبر الخطي (Linear Algebra)</li>
+<li>المعادلات التفاضلية العادية (ODE)</li>
+</ul>
+
+<h2>1.2 الخطوات الخمس لحل المشكلات</h2>
+<table>
+<tr><th>#</th><th>الخطوة</th><th>الوصف</th></tr>
+<tr><td>1</td><td>النمذجة (Modeling)</td><td>بناء النموذج الرياضي: تكامل، نظام معادلات، معادلة تفاضلية</td></tr>
+<tr><td>2</td><td>اختيار الطريقة</td><td>تحديد الخوارزمية العددية المناسبة</td></tr>
+<tr><td>3</td><td>البرمجة (Programming)</td><td>كتابة البرنامج بلغة: MATLAB, C++, FORTRAN</td></tr>
+<tr><td>4</td><td>التنفيذ (Computation)</td><td>إجراء الحسابات</td></tr>
+<tr><td>5</td><td>التفسير (Interpretation)</td><td>تحليل النتائج وربطها بالمشكلة الأصلية</td></tr>
+</table>
+
+<h2>1.3 مصادر الخطأ العددي</h2>
+<div class="formula">
+<strong>الخطأ المطلق:</strong> E_abs = |x* - x|<br><br>
+<strong>الخطأ النسبي:</strong> E_rel = |x* - x| / |x*| × 100%
+</div>
+<ul>
+<li><strong>خطأ القطع (Truncation Error):</strong> استبدال عملية لا نهائية بمنتهية (مثل قطع متسلسلة تايلور)</li>
+<li><strong>خطأ التقريب (Round-off Error):</strong> تمثيل الأرقام بعدد محدود من الخانات في الحاسوب</li>
+</ul>
+
+<pre>
+% ============================================
+% المحاضرة 1: حساب الخطأ العددي - MATLAB
+% ============================================
+clc; clear;
+exact = 8/3;
+approx = 2.667;
+abs_err = abs(exact - approx);
+rel_err = abs_err / abs(exact) * 100;
+fprintf('القيمة الحقيقية = %.6f\n', exact);
+fprintf('القيمة التقريبية = %.6f\n', approx);
+fprintf('الخطأ المطلق = %.6f\n', abs_err);
+fprintf('الخطأ النسبي = %.4f%%\n', rel_err);
+</pre>
+
+<h1>المحاضرة 2: الأنظمة الخطية والطرق المباشرة</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>كتابة الصيغة العامة للنظام الخطي والمصفوفة الموسعة</li>
+<li>الحل باستخدام المصفوفة العكسية (Inverse Matrix)</li>
+<li>تطبيق مرحلة الحذف والتعويض الخلفي في غاوس</li>
+<li>كتابة خوارزمية وتنفيذها في MATLAB</li>
+</ol>
+</div>
+
+<h2>2.1 الصيغة العامة للنظام الخطي</h2>
+<div class="formula">
+a₁₁x₁ + a₁₂x₂ + ... + a₁ₙxₙ = b₁<br>
+a₂₁x₁ + a₂₂x₂ + ... + a₂ₙxₙ = b₂<br>
+⋮<br>
+aₘ₁x₁ + aₘ₂x₂ + ... + aₘₙxₙ = bₘ
+</div>
+<h3>صيغة المصفوفة: Ax = b</h3>
+<p>حيث A مصفوفة m×n ، و b متجه m×1 ، و x متجه المجهولات n×1</p>
+
+<h3>تصنيف الأنظمة:</h3>
+<table>
+<tr><th>النوع</th><th>الشرط</th><th>عدد الحلول</th></tr>
+<tr><td>محدد تماماً (Well-determined)</td><td>m = n</td><td>حل وحيد / لا حل / لا نهائي</td></tr>
+<tr><td>غير محدد (Under-determined)</td><td>m &lt; n</td><td>لا حل / لا نهائي</td></tr>
+<tr><td>محدد زائد (Over-determined)</td><td>m &gt; n</td><td>لا حل / حل وحيد</td></tr>
+</table>
+
+<h2>2.2 الحل بالمصفوفة العكسية</h2>
+<div class="formula">
+<strong>إذا كانت A قابلة للعكس (det(A) ≠ 0):</strong><br><br>
+x = A⁻¹ · b
+</div>
+
+<div class="example">
+<h4>📝 مثال: الحل بالمصفوفة العكسية</h4>
+<p>حل النظام: x₁ + x₂ = 3 ، x₁ - x₂ = 1</p>
+<div class="solution">
+<p><strong>الحل:</strong></p>
+<p>A = [1, 1; 1, -1] ، b = [3; 1]</p>
+<p>det(A) = (1)(-1) - (1)(1) = -2 ≠ 0 ✓</p>
+<p>A⁻¹ = (1/-2)·[-1, -1; -1, 1] = [0.5, 0.5; 0.5, -0.5]</p>
+<p>x = A⁻¹·b = [0.5×3 + 0.5×1 ; 0.5×3 - 0.5×1] = <strong>[2 ; 1]</strong></p>
+</div>
+</div>
+
+<h2>2.3 طريقة حذف غاوس (Gauss Elimination)</h2>
+<p>تتكون من <strong>مرحلتين:</strong></p>
+<ol>
+<li><strong>مرحلة الحذف (Elimination):</strong> تحويل المصفوفة الموسعة إلى مثلثية علوية في (n-1) خطوة باستخدام عمليات الصفوف الأولية</li>
+<li><strong>مرحلة التعويض الخلفي (Back Substitution):</strong> حل النظام المثلثي</li>
+</ol>
+
+<h3>صيغة التعويض الخلفي:</h3>
+<div class="formula">
+xₙ = bₙ / aₙₙ<br><br>
+xᵢ = (bᵢ - Σⱼ₌ᵢ₊₁ⁿ aᵢⱼ·xⱼ) / aᵢᵢ<br>
+حيث i = n-1, n-2, ..., 1
+</div>
+
+<div class="example">
+<h4>📝 مثال: حذف غاوس (من الملف)</h4>
+<p>حل النظام التالي بطريقة غاوس:</p>
+<div class="solution">
+<p><strong>المصفوفة الموسعة الابتدائية:</strong></p>
+<p>[2, 1, -1 | 1]</p>
+<p>[3, 2, 1 | 7]</p>
+<p>[1, -1, 2 | 1]</p>
+<p><strong>الخطوة 1 - الحذف:</strong></p>
+<p>R₂ ← R₂ - (3/2)R₁ → [0, 0.5, 2.5 | 5.5]</p>
+<p>R₃ ← R₃ - (1/2)R₁ → [0, -1.5, 2.5 | 0.5]</p>
+<p><strong>الخطوة 2 - الحذف:</strong></p>
+<p>R₃ ← R₃ + 3R₂ → [0, 0, 10 | 17]</p>
+<p><strong>التعويض الخلفي:</strong></p>
+<p>x₃ = 17/10 = <strong>1.7</strong></p>
+<p>0.5x₂ + 2.5(1.7) = 5.5 → x₂ = <strong>2.5</strong></p>
+<p>2x₁ + 2.5 - 1.7 = 1 → x₁ = <strong>0.1</strong></p>
+</div>
+</div>
+
+<h3>خوارزمية غاوس الكاملة:</h3>
+<pre>
+% ============================================
+% المحاضرة 2: حذف غاوس - MATLAB
+% ============================================
+clc; clear;
+A = [2 1 -1; 3 2 1; 1 -1 2];
+b = [1; 7; 1];
+n = length(b);
+Ab = [A b]; % المصفوفة الموسعة
+
+% ─── المرحلة 1: الحذف ───
+for i = 1:n-1
+    % Partial Pivoting: اختيار أكبر عنصر محوري
+    [~, p] = max(abs(Ab(i:n, i)));
+    p = p + i - 1;
+    if p ~= i
+        Ab([i p], :) = Ab([p i], :); % تبديل الصفوف
+    end
+    for j = i+1:n
+        m = Ab(j,i) / Ab(i,i);
+        Ab(j,:) = Ab(j,:) - m * Ab(i,:);
+    end
+end
+
+% ─── المرحلة 2: التعويض الخلفي ───
+x = zeros(n,1);
+x(n) = Ab(n,n+1) / Ab(n,n);
+for i = n-1:-1:1
+    x(i) = (Ab(i,n+1) - Ab(i,i+1:n)*x(i+1:n)) / Ab(i,i);
+end
+
+fprintf('الحل بطريقة غاوس:\n');
+for i = 1:n
+    fprintf('x%d = %.6f\n', i, x(i));
+end
+</pre>
+
+<h1>المحاضرة 3: الطرق التكرارية للأنظمة الخطية</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>فكرة الطرق التكرارية والتقارب</li>
+<li>تطبيق طريقة جاكوبي (Jacobi Method)</li>
+<li>تطبيق طريقة غاوس-سايدل (Gauss-Seidel Method)</li>
+<li>التمييز بين الطريقتين</li>
+<li>شرط التوقف: |x⁽ᵏ⁺¹⁾ - x⁽ᵏ⁾| ≤ ε</li>
+</ol>
+</div>
+
+<h2>3.1 الفكرة العامة</h2>
+<p>الطرق التكرارية لا تحل النظام مباشرة، بل تولد متتالية من التقريبات:</p>
+<div class="formula">
+x⁽⁰⁾, x⁽¹⁾, x⁽²⁾, ... → x (الحل)<br><br>
+x⁽ᵏ⁺¹⁾ = C·x⁽ᵏ⁾ + d ، k = 0, 1, 2, ...
+</div>
+
+<h2>3.2 طريقة جاكوبي (Jacobi)</h2>
+<div class="formula">
+xᵢ⁽ᵏ⁺¹⁾ = (1/aᵢᵢ) × [bᵢ - Σⱼ≠ᵢ aᵢⱼ·xⱼ⁽ᵏ⁾]
+</div>
+<p><strong>النقطة الجوهرية:</strong> جميع القيم في الطرف الأيمن من التكرار <em>السابق</em> k</p>
+
+<h3>لنظام 3×3:</h3>
+<div class="formula">
+x₁⁽ᵏ⁺¹⁾ = (1/a₁₁)[b₁ - a₁₂x₂⁽ᵏ⁾ - a₁₃x₃⁽ᵏ⁾]<br>
+x₂⁽ᵏ⁺¹⁾ = (1/a₂₂)[b₂ - a₂₁x₁⁽ᵏ⁾ - a₂₃x₃⁽ᵏ⁾]<br>
+x₃⁽ᵏ⁺¹⁾ = (1/a₃₃)[b₃ - a₃₁x₁⁽ᵏ⁾ - a₃₂x₂⁽ᵏ⁾]
+</div>
+
+<h2>3.3 طريقة غاوس-سايدل (Gauss-Seidel)</h2>
+<div class="formula">
+x₁⁽ᵏ⁺¹⁾ = (1/a₁₁)[b₁ - a₁₂x₂⁽ᵏ⁾ - a₁₃x₃⁽ᵏ⁾]<br>
+x₂⁽ᵏ⁺¹⁾ = (1/a₂₂)[b₂ - a₂₁x₁⁽ᵏ⁺¹⁾ - a₂₃x₃⁽ᵏ⁾]<br>
+x₃⁽ᵏ⁺¹⁾ = (1/a₃₃)[b₃ - a₃₁x₁⁽ᵏ⁺¹⁾ - a₃₂x₂⁽ᵏ⁺¹⁾]
+</div>
+<p><strong>الفرق الجوهري:</strong> نستخدم القيم <em>المحدثة</em> فور توفرها (x₁⁽ᵏ⁺¹⁾ في حساب x₂⁽ᵏ⁺¹⁾)</p>
+
+<h2>3.4 شرط التوقف</h2>
+<div class="formula">
+|xᵢ⁽ᵏ⁺¹⁾ - xᵢ⁽ᵏ⁾| ≤ ε (التسامح المعطى)
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: جاكوبي</h4>
+<p>النظام: 3u + v = 5 ، u + 2v = 5 ، التخمين الأولي: (u₀,v₀) = (0,0)</p>
+<div class="solution">
+<p><strong>إعادة الكتابة:</strong> u = (5-v)/3 ، v = (5-u)/2</p>
+<table>
+<tr><th>k</th><th>u⁽ᵏ⁾</th><th>v⁽ᵏ⁾</th><th>الحساب</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>تخمين أولي</td></tr>
+<tr><td>1</td><td>5/3 ≈ 1.667</td><td>5/2 = 2.5</td><td>u₁=(5-0)/3, v₁=(5-0)/2</td></tr>
+<tr><td>2</td><td>5/6 ≈ 0.833</td><td>5/3 ≈ 1.667</td><td>u₂=(5-5/2)/3, v₂=(5-5/3)/2</td></tr>
+<tr><td>3</td><td>10/9 ≈ 1.111</td><td>25/12 ≈ 2.083</td><td>u₃=(5-5/3)/3, v₃=(5-5/6)/2</td></tr>
+<tr><td>∞</td><td><strong>1</strong></td><td><strong>2</strong></td><td>الحل الدقيق</td></tr>
+</table>
+</div>
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: غاوس-سايدل</h4>
+<p>نفس النظام: 3u + v = 5 ، u + 2v = 5</p>
+<div class="solution">
+<table>
+<tr><th>k</th><th>u⁽ᵏ⁾</th><th>v⁽ᵏ⁾</th><th>ملاحظة</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td></td></tr>
+<tr><td>1</td><td>5/3</td><td>5/3</td><td>v¹ استخدمت u¹ = 5/3 المحدثة</td></tr>
+<tr><td>2</td><td>10/9</td><td>35/18</td><td>v² استخدمت u² = 10/9</td></tr>
+<tr><td>3</td><td>55/54</td><td>215/108</td><td></td></tr>
+<tr><td>∞</td><td><strong>1</strong></td><td><strong>2</strong></td><td>تقارب أسرع من جاكوبي!</td></tr>
+</table>
+<p><strong>الخلاصة من الملف:</strong> "Gauss-Seidel often converges faster than Jacobi if the method is convergent"</p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 3: غاوس-سايدل - MATLAB
+% ============================================
+clc; clear;
+A = [3 1; 1 2];
+b = [5; 5];
+n = length(b);
+x = zeros(n,1); % التخمين الأولي
+tol = 1e-6;
+
+fprintf('  k  |   u     |   v     | الخطأ\n');
+fprintf('─────────────────────────────────\n');
+
+for k = 1:100
+    x_old = x;
+    for i = 1:n
+        s = 0;
+        for j = 1:n
+            if j ~= i
+                s = s + A(i,j) * x(j); % قيم محدثة فوراً
+            end
+        end
+        x(i) = (b(i) - s) / A(i,i);
+    end
+    err = max(abs(x - x_old));
+    fprintf(' %2d | %.4f | %.4f | %.6f\n', k, x(1), x(2), err);
+    if err < tol
+        fprintf('\nتقارب عند التكرار %d\n', k);
+        break;
+    end
+end
+fprintf('\nالحل النهائي: u = %.6f, v = %.6f\n', x(1), x(2));
+</pre>
+
+<h1>المحاضرة 4: المعادلات غير الخطية - الجزء الأول</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>تعريف طريقة التنصيف (Bisection) وشرطها</li>
+<li>حساب عدد التكرارات المطلوبة</li>
+<li>تطبيق طريقة الوضع الكاذب (False Position)</li>
+<li>كتابة الخوارزميات وتنفيذها في MATLAB</li>
+</ol>
+</div>
+
+<h2>4.1 شرط وجود جذر (نظرية القيمة المتوسطة)</h2>
+<div class="formula">
+إذا كانت f متصلة على [a,b] و f(a)·f(b) < 0<br>
+→ يوجد جذر واحد على الأقل في [a,b]
+</div>
+
+<h2>4.2 طريقة التنصيف (Bisection / Interval Halving)</h2>
+<h3>الفكرة:</h3>
+<ol>
+<li>نبدأ بقيمتين a و b تحصران جذرًا: f(a)·f(b) < 0</li>
+<li>نحسب المنتصف: c = (a+b)/2</li>
+<li>نحدد أي نصف يحتوي الجذر بناءً على إشارة f(c)</li>
+<li>نكرر حتى الوصول للدقة المطلوبة</li>
+</ol>
+
+<h3>عدد التكرارات المطلوبة:</h3>
+<div class="formula">
+n ≥ ln((b-a)/ε) / ln(2)
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: التنصيف</h4>
+<p>إيجاد جذر دالة على الفترة [0, 1]</p>
+<div class="solution">
+<table>
+<tr><th>i</th><th>a</th><th>c = (a+b)/2</th><th>b</th><th>إشارة f(c)</th></tr>
+<tr><td>0</td><td>0.0000</td><td>0.5000</td><td>1.0000</td><td>−</td></tr>
+<tr><td>1</td><td>0.5000</td><td>0.7500</td><td>1.0000</td><td>+</td></tr>
+<tr><td>2</td><td>0.5000</td><td>0.6250</td><td>0.7500</td><td>−</td></tr>
+<tr><td>3</td><td>0.6250</td><td>0.6875</td><td>0.7500</td><td>+</td></tr>
+<tr><td>4</td><td>0.6250</td><td>0.6562</td><td>0.6875</td><td>−</td></tr>
+<tr><td>5</td><td>0.6562</td><td>0.6719</td><td>0.6875</td><td>−</td></tr>
+<tr><td>6</td><td>0.6719</td><td>0.6797</td><td>0.6875</td><td>−</td></tr>
+<tr><td>7</td><td>0.6797</td><td>0.6836</td><td>0.6875</td><td>+</td></tr>
+<tr><td>8</td><td>0.6797</td><td>0.6816</td><td>0.6836</td><td>−</td></tr>
+<tr><td>9</td><td>0.6816</td><td>0.6826</td><td>0.6836</td><td>+</td></tr>
+</table>
+<p><strong>النتيجة:</strong> الجذر ∈ [0.6816, 0.6826] → الجذر ≈ <strong>0.6821 ± 0.0005</strong></p>
+</div>
+</div>
+
+<h3>خوارزمية التنصيف:</h3>
+<ol>
+<li>المدخلات: a, b بحيث f(a)·f(b) < 0 ، والتسامح ε</li>
+<li>كرر:</li>
+<li style="margin-right:20px">احسب c = (a+b)/2</li>
+<li style="margin-right:20px">إذا f(a)·f(c) < 0 → b = c</li>
+<li style="margin-right:20px">وإلا → a = c</li>
+<li>حتى (b-a)/2 < ε أو f(c) = 0</li>
+<li>النتيجة: c هو تقريب الجذر</li>
+</ol>
+
+<h2>4.3 طريقة الوضع الكاذب (False Position / Regula Falsi)</h2>
+<div class="formula">
+c = [a·f(b) - b·f(a)] / [f(b) - f(a)]
+</div>
+<p>مشابهة للتنصيف لكن بدل المنتصف نستخدم نقطة تقاطع القاطع مع محور x</p>
+
+<div class="example">
+<h4>📝 مثال من الملف: الوضع الكاذب</h4>
+<p>الفترة [0, 1]</p>
+<div class="solution">
+<table>
+<tr><th>n</th><th>a</th><th>b</th><th>c</th><th>f(c)</th></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0.333333</td><td>-0.296296</td></tr>
+<tr><td>2</td><td>0.333333</td><td>1</td><td>0.257140</td><td>-0.000386</td></tr>
+<tr><td>3</td><td>0.257140</td><td>1</td><td>0.254200</td><td>-0.000013</td></tr>
+<tr><td>4</td><td>0.254200</td><td>1</td><td>0.254102</td><td>-0.000000</td></tr>
+<tr><td>5</td><td>0.254102</td><td>1</td><td>0.254102</td><td>≈ 0</td></tr>
+</table>
+<p><strong>الجذر ≈ 0.2541</strong></p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 4: التنصيف + الوضع الكاذب - MATLAB
+% ============================================
+clc; clear;
+f = @(x) x.^3 - x - 1;
+a = 0; b = 1; tol = 1e-6;
+
+% ─── التنصيف ───
+if f(a)*f(b) >= 0, error('لا يوجد تغيير إشارة'); end
+a1=a; b1=b;
+for n = 1:100
+    c = (a1+b1)/2;
+    if abs(f(c)) < tol || (b1-a1)/2 < tol
+        fprintf('التنصيف: الجذر = %.8f بعد %d تكرار\n', c, n);
+        break;
+    end
+    if f(a1)*f(c) < 0, b1 = c; else, a1 = c; end
+end
+
+% ─── الوضع الكاذب ───
+a2=a; b2=b;
+for n = 1:100
+    c = (a2*f(b2) - b2*f(a2)) / (f(b2) - f(a2));
+    if abs(f(c)) < tol
+        fprintf('الوضع الكاذب: الجذر = %.8f بعد %d تكرار\n', c, n);
+        break;
+    end
+    if f(a2)*f(c) < 0, b2 = c; else, a2 = c; end
+end
+</pre>
+
+<h1>المحاضرة 5: المعادلات غير الخطية - الجزء الثاني</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>اشتقاق وتطبيق طريقة نيوتن-رافسون (Newton-Raphson)</li>
+<li>تطبيق طريقة القاطع (Secant Method)</li>
+<li>المقارنة بين الطريقتين من حيث السرعة</li>
+</ol>
+</div>
+
+<h2>5.1 طريقة نيوتن-رافسون</h2>
+<p>أسرع الطرق تقاربًا. تتطلب تخمين أولي x₀ ومشتقة الدالة.</p>
+<div class="formula">
+xᵢ₊₁ = xᵢ - f(xᵢ) / f'(xᵢ) ، i = 0, 1, 2, ...
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: نيوتن</h4>
+<p>f(x) = x³ - x - 1 ، التخمين: x₀ = 0.7</p>
+<div class="solution">
+<p>f'(x) = 3x² - 1</p>
+<p>الصيغة: xᵢ₊₁ = xᵢ - (xᵢ³ - xᵢ - 1)/(3xᵢ² - 1)</p>
+<table>
+<tr><th>i</th><th>xᵢ</th></tr>
+<tr><td>0</td><td>0.70000000</td></tr>
+<tr><td>1</td><td>0.12712551</td></tr>
+<tr><td>2</td><td>0.95767812</td></tr>
+<tr><td>3</td><td>0.73482779</td></tr>
+<tr><td>4</td><td>0.68459177</td></tr>
+<tr><td>5</td><td>0.68233217</td></tr>
+<tr><td>6</td><td>0.68232780</td></tr>
+</table>
+<p><strong>الجذر ≈ 0.6823278</strong></p>
+</div>
+</div>
+
+<h3>خوارزمية نيوتن-رافسون:</h3>
+<ol>
+<li><strong>المدخلات:</strong> تخمين أولي p₀ ، تسامح TOL ، أقصى تكرارات N</li>
+<li><strong>الخطوة 1:</strong> عيّن i = 1</li>
+<li><strong>الخطوة 2:</strong> بينما i ≤ N نفّذ الخطوات 3-6</li>
+<li><strong>الخطوة 3:</strong> احسب p = p₀ - f(p₀)/f'(p₀)</li>
+<li><strong>الخطوة 4:</strong> إذا |p - p₀| < TOL → اطبع p وتوقف (نجاح)</li>
+<li><strong>الخطوة 5:</strong> عيّن i = i + 1</li>
+<li><strong>الخطوة 6:</strong> عيّن p₀ = p (تحديث)</li>
+<li><strong>الخطوة 7:</strong> اطبع "الطريقة فشلت بعد N تكرار" وتوقف</li>
+</ol>
+
+<h2>5.2 طريقة القاطع (Secant Method)</h2>
+<p>مشابهة لنيوتن لكنها تستبدل المشتقة بـ <strong>خارج قسمة الفروق</strong>:</p>
+<div class="formula">
+f'(xᵢ) ≈ [f(xᵢ) - f(xᵢ₋₁)] / (xᵢ - xᵢ₋₁)<br><br>
+<strong>الصيغة:</strong><br>
+xᵢ₊₁ = xᵢ - f(xᵢ)·(xᵢ - xᵢ₋₁) / [f(xᵢ) - f(xᵢ₋₁)]
+</div>
+<p><strong>الفرق:</strong> تحتاج نقطتين أوليتين (x₀, x₁) بدل نقطة واحدة + مشتقة</p>
+
+<div class="example">
+<h4>📝 مثال من الملف: القاطع</h4>
+<p>f(x) = x³ - x - 1 ، x₀ = 0 ، x₁ = 1</p>
+<div class="solution">
+<table>
+<tr><th>i</th><th>xᵢ</th></tr>
+<tr><td>0</td><td>0.00000000</td></tr>
+<tr><td>1</td><td>1.00000000</td></tr>
+<tr><td>2</td><td>0.50000000</td></tr>
+<tr><td>3</td><td>0.63636364</td></tr>
+<tr><td>4</td><td>0.69005236</td></tr>
+<tr><td>5</td><td>0.68202042</td></tr>
+<tr><td>6</td><td>0.68232578</td></tr>
+<tr><td>7</td><td>0.68232780</td></tr>
+<tr><td>8</td><td>0.68232780</td></tr>
+<tr><td>9</td><td>0.68232780</td></tr>
+</table>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 5: نيوتن + القاطع - MATLAB
+% ============================================
+clc; clear;
+f = @(x) x.^3 - x - 1;
+df = @(x) 3*x.^2 - 1;
+
+% ─── طريقة نيوتن ───
+x = 0.7; tol = 1e-8;
+fprintf('نيوتن:\n i | x_i\n');
+for i = 0:50
+    fprintf(' %d | %.10f\n', i, x);
+    x_new = x - f(x)/df(x);
+    if abs(x_new - x) < tol, break; end
+    x = x_new;
+end
+
+% ─── طريقة القاطع ───
+x0 = 0; x1 = 1;
+fprintf('\nالقاطع:\n i | x_i\n');
+for i = 0:50
+    fprintf(' %d | %.10f\n', i, x1);
+    x2 = x1 - f(x1)*(x1-x0)/(f(x1)-f(x0));
+    if abs(x2-x1) < tol, break; end
+    x0 = x1; x1 = x2;
+end
+</pre>
+
+<h1>المحاضرات 6-7-8: الاستكمال الرياضي (Interpolation)</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>الطريقة العامة (General Method) - مصفوفة فانديرموند + قاعدة كرامر</li>
+<li>طريقة لا جرانج (Lagrange Interpolation)</li>
+<li>طريقة فروق نيوتن المقسمة (Newton Divided Differences)</li>
+</ol>
+</div>
+
+<h2>6.1 تعريف الاستكمال</h2>
+<p>الدالة p(x) <strong>تستكمل</strong> نقاط البيانات (xᵢ, yᵢ) إذا كانت تمر بجميع النقاط:</p>
+<div class="formula">
+p(xᵢ) = yᵢ ، لكل i = 0, 1, ..., n-1
+</div>
+
+<h2>6.2 الطريقة العامة (General Method)</h2>
+<div class="formula">
+p(x) = a₀ + a₁x + a₂x² + ... + aₙ₋₁xⁿ⁻¹
+</div>
+<p>بالتعويض بكل نقطة بيانات نحصل على نظام خطي من n معادلة في n مجهول (a₀, a₁, ..., aₙ₋₁)</p>
+<p>يُحل النظام باستخدام <strong>قاعدة كرامر (Cramer's Rule):</strong></p>
+<div class="formula">
+aᵢ = det(Aᵢ) / det(A)
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: الطريقة العامة</h4>
+<p>النقاط: (0,1), (1,2), (2,0), (3,-1)</p>
+<div class="solution">
+<p>4 نقاط → كثير حدود من الدرجة 3:</p>
+<p>p(x) = a₀ + a₁x + a₂x² + a₃x³</p>
+<p><strong>النظام:</strong></p>
+<p>a₀ = 1</p>
+<p>a₀ + a₁ + a₂ + a₃ = 2</p>
+<p>a₀ + 2a₁ + 4a₂ + 8a₃ = 0</p>
+<p>a₀ + 3a₁ + 9a₂ + 27a₃ = -1</p>
+<p>بالحل بقاعدة كرامر:</p>
+<p><strong>p(x) = 1 + (23/6)x - (7/2)x² + (2/3)x³</strong></p>
+</div>
+</div>
+
+<h2>7.1 طريقة لا جرانج (Lagrange)</h2>
+<div class="formula">
+p(x) = Σᵢ₌₀ⁿ⁻¹ yᵢ · Lᵢ(x)<br><br>
+حيث: Lᵢ(x) = Πⱼ≠ᵢ (x - xⱼ)/(xᵢ - xⱼ)
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: لا جرانج</h4>
+<p>النقاط: (0,-3), (1,1), (2,2), (4,7)</p>
+<div class="solution">
+<p><strong>دوال الأساس:</strong></p>
+<p>L₀(x) = (x-1)(x-2)(x-4) / [(0-1)(0-2)(0-4)] = (x-1)(x-2)(x-4)/(-8)</p>
+<p>L₁(x) = x(x-2)(x-4) / [(1-0)(1-2)(1-4)] = x(x-2)(x-4)/3</p>
+<p>L₂(x) = x(x-1)(x-4) / [(2-0)(2-1)(2-4)] = x(x-1)(x-4)/(-4)</p>
+<p>L₃(x) = x(x-1)(x-2) / [(4-0)(4-1)(4-2)] = x(x-1)(x-2)/24</p>
+<p><strong>كثير الحدود:</strong></p>
+<p>p(x) = -3·L₀(x) + 1·L₁(x) + 2·L₂(x) + 7·L₃(x)</p>
+<p>بالتبسيط: <strong>p(x) = -3 + (23/4)x - (19/8)x² + (1/8)x³</strong></p>
+</div>
+</div>
+
+<h2>8.1 فروق نيوتن المقسمة (Newton Divided Differences)</h2>
+<div class="formula">
+f[xᵢ] = f(xᵢ)<br><br>
+f[xᵢ,xⱼ] = (f(xⱼ) - f(xᵢ)) / (xⱼ - xᵢ)<br><br>
+f[xᵢ,xⱼ,xₖ] = (f[xⱼ,xₖ] - f[xᵢ,xⱼ]) / (xₖ - xᵢ)
+</div>
+
+<h3>كثير حدود نيوتن:</h3>
+<div class="formula">
+p(x) = f[x₀] + f[x₀,x₁](x-x₀) + f[x₀,x₁,x₂](x-x₀)(x-x₁) + ...
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: فروق نيوتن</h4>
+<p>النقاط: (0,1), (2,2), (3,4)</p>
+<div class="solution">
+<p><strong>جدول الفروق المقسمة:</strong></p>
+<table>
+<tr><th>x</th><th>f[x]</th><th>f[xᵢ,xᵢ₊₁]</th><th>f[xᵢ,xᵢ₊₁,xᵢ₊₂]</th></tr>
+<tr><td>0</td><td>1</td><td>(2-1)/(2-0) = 0.5</td><td>(2-0.5)/(3-0) = 0.5</td></tr>
+<tr><td>2</td><td>2</td><td>(4-2)/(3-2) = 2</td><td></td></tr>
+<tr><td>3</td><td>4</td><td></td><td></td></tr>
+</table>
+<p><strong>كثير الحدود:</strong></p>
+<p>p(x) = 1 + 0.5(x-0) + 0.5(x-0)(x-2)</p>
+<p>p(x) = 1 + 0.5x + 0.5x² - x</p>
+<p><strong>p(x) = 0.5x² - 0.5x + 1</strong></p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرات 6-8: الاستكمال - MATLAB
+% ============================================
+clc; clear;
+
+% ─── لا جرانج ───
+x_data = [0 1 2 4];
+y_data = [-3 1 2 7];
+n = length(x_data);
+
+syms x;
+p = 0;
+for i = 1:n
+    Li = 1;
+    for j = 1:n
+        if j ~= i
+            Li = Li * (x - x_data(j)) / (x_data(i) - x_data(j));
+        end
+    end
+    p = p + y_data(i) * Li;
+end
+p = simplify(expand(p));
+fprintf('لا جرانج: p(x) = %s\n', char(p));
+
+% ─── فروق نيوتن ───
+x2 = [0 2 3]; y2 = [1 2 4];
+n2 = length(x2);
+DD = zeros(n2,n2);
+DD(:,1) = y2';
+for j = 2:n2
+    for i = 1:n2-j+1
+        DD(i,j) = (DD(i+1,j-1)-DD(i,j-1))/(x2(i+j-1)-x2(i));
+    end
+end
+fprintf('\nجدول الفروق المقسمة:\n'); disp(DD);
+
+p2 = DD(1,1); term = 1;
+for k = 2:n2
+    term = term * (x - x2(k-1));
+    p2 = p2 + DD(1,k)*term;
+end
+fprintf('نيوتن: p(x) = %s\n', char(expand(p2)));
+</pre>
+
+<h1>المحاضرة 9: التفاضل العددي</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>اشتقاق صيغ الفروق المنتهية من متسلسلة تايلور</li>
+<li>المشتقة الأولى: أمامية، مركزية، خلفية</li>
+<li>المشتقة الثانية: أمامية، مركزية، خلفية</li>
+<li>تحليل دقة الخطأ O(h) و O(h²)</li>
+</ol>
+</div>
+
+<h2>9.1 الأساس: تعريف المشتقة</h2>
+<div class="formula">
+f'(x) = lim(h→0) [f(x+h) - f(x)] / h
+</div>
+
+<h2>9.2 صيغ المشتقة الأولى</h2>
+<table>
+<tr><th>الصيغة</th><th>القانون</th><th>رتبة الخطأ</th></tr>
+<tr><td>أمامية (نقطتان)</td><td>f'(x) ≈ [f(x+h) - f(x)] / h</td><td>O(h)</td></tr>
+<tr><td>مركزية (نقطتان)</td><td>f'(x) ≈ [f(x+h) - f(x-h)] / (2h)</td><td>O(h²) ✓ الأدق</td></tr>
+<tr><td>خلفية (نقطتان)</td><td>f'(x) ≈ [f(x) - f(x-h)] / h</td><td>O(h)</td></tr>
+</table>
+
+<h2>9.3 صيغ المشتقة الثانية</h2>
+<table>
+<tr><th>الصيغة</th><th>القانون</th><th>رتبة الخطأ</th></tr>
+<tr><td>أمامية (3 نقاط)</td><td>f''(x) ≈ [f(x+2h) - 2f(x+h) + f(x)] / h²</td><td>O(h)</td></tr>
+<tr><td>مركزية (3 نقاط)</td><td>f''(x) ≈ [f(x+h) - 2f(x) + f(x-h)] / h²</td><td>O(h²) ✓ الأدق</td></tr>
+<tr><td>خلفية (3 نقاط)</td><td>f''(x) ≈ [f(x) - 2f(x-h) + f(x-2h)] / h²</td><td>O(h)</td></tr>
+</table>
+
+<div class="example">
+<h4>📝 مثال من الملف: المشتقة الأولى</h4>
+<p>f(x) = x²·eˣ ، احسب f'(2) مع h = 0.01</p>
+<div class="solution">
+<table>
+<tr><th>x</th><th>f(x) = x²eˣ</th></tr>
+<tr><td>1.99</td><td>1.57240</td></tr>
+<tr><td>2.00</td><td>2.00000</td></tr>
+<tr><td>2.01</td><td>2.43240</td></tr>
+</table>
+<p><strong>1) الأمامية:</strong> (2.43240 - 2.00000)/0.01 = 43.24</p>
+<p><strong>2) المركزية:</strong> (2.43240 - 1.57240)/(2×0.01) = 43.00</p>
+<p><strong>3) الخلفية:</strong> (2.00000 - 1.57240)/0.01 = 42.76</p>
+<p><strong>الخلاصة:</strong> الصيغة المركزية أدق (خطأ O(h²))</p>
+</div>
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: المشتقة الثانية</h4>
+<p>f(x) = x²·eˣ ، احسب f''(1) مع h = 0.005</p>
+<div class="solution">
+<table>
+<tr><th>x</th><th>f(x)</th></tr>
+<tr><td>0.990</td><td>7.94080</td></tr>
+<tr><td>0.995</td><td>7.97020</td></tr>
+<tr><td>1.000</td><td>8.00000</td></tr>
+<tr><td>1.005</td><td>8.03020</td></tr>
+<tr><td>1.010</td><td>8.06080</td></tr>
+</table>
+<p><strong>الأمامية:</strong> (8.06080 - 2×8.03020 + 8.00000)/(0.005)² = 17.60</p>
+<p><strong>المركزية:</strong> (8.03020 - 2×8.00000 + 7.97020)/(0.005)² = 16.08</p>
+<p><strong>الخلفية:</strong> (8.00000 - 2×7.97020 + 7.94080)/(0.005)² = 16.16</p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 9: التفاضل العددي - MATLAB
+% ============================================
+clc; clear;
+f = @(x) x.^2 .* exp(x);
+x0 = 2; h = 0.01;
+
+% المشتقة الأولى
+df_fwd = (f(x0+h) - f(x0)) / h;
+df_ctr = (f(x0+h) - f(x0-h)) / (2*h);
+df_bwd = (f(x0) - f(x0-h)) / h;
+
+fprintf('المشتقة الأولى عند x=2:\n');
+fprintf('  أمامية:  %.6f\n', df_fwd);
+fprintf('  مركزية:  %.6f\n', df_ctr);
+fprintf('  خلفية:   %.6f\n', df_bwd);
+
+% المشتقة الثانية
+x1 = 1; h2 = 0.005;
+d2f_fwd = (f(x1+2*h2) - 2*f(x1+h2) + f(x1)) / h2^2;
+d2f_ctr = (f(x1+h2) - 2*f(x1) + f(x1-h2)) / h2^2;
+d2f_bwd = (f(x1) - 2*f(x1-h2) + f(x1-2*h2)) / h2^2;
+
+fprintf('\nالمشتقة الثانية عند x=1:\n');
+fprintf('  أمامية:  %.6f\n', d2f_fwd);
+fprintf('  مركزية:  %.6f\n', d2f_ctr);
+fprintf('  خلفية:   %.6f\n', d2f_bwd);
+</pre>
+
+<h1>المحاضرة 10: التكامل العددي</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>قاعدة شبه المنحرف البسيطة والمركبة (Trapezoidal Rule)</li>
+<li>قاعدة سيمبسون البسيطة والمركبة (Simpson's Rule)</li>
+<li>مقارنة الدقة بين القواعد</li>
+</ol>
+</div>
+
+<h2>10.1 قاعدة شبه المنحرف البسيطة</h2>
+<div class="formula">
+∫ₐᵇ f(x)dx ≈ (b-a)/2 × [f(a) + f(b)]
+</div>
+
+<h2>10.2 قاعدة شبه المنحرف المركبة</h2>
+<div class="formula">
+∫ₐᵇ f(x)dx ≈ (h/2) × [f(x₀) + 2·Σᵢ₌₁ⁿ⁻¹ f(xᵢ) + f(xₙ)]<br><br>
+حيث: h = (b-a)/n ، xᵢ = a + i·h
+</div>
+
+<h2>10.3 قاعدة سيمبسون البسيطة</h2>
+<div class="formula">
+∫ₐᵇ f(x)dx ≈ (b-a)/6 × [f(a) + 4·f((a+b)/2) + f(b)]
+</div>
+
+<h2>10.4 قاعدة سيمبسون المركبة</h2>
+<div class="formula">
+∫ₐᵇ f(x)dx ≈ (h/3) × [f(x₀) + 4·Σ(الفردي) f(xᵢ) + 2·Σ(الزوجي) f(xᵢ) + f(xₙ)]<br><br>
+حيث: h = (b-a)/n و n يجب أن يكون زوجياً
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: القواعد البسيطة</h4>
+<p>∫₀¹ x·eˣ dx</p>
+<div class="solution">
+<p>f(0) = 0 ، f(0.5) = 0.5·e^0.5 ≈ 0.82436 ، f(1) = e ≈ 2.71828</p>
+<p><strong>شبه المنحرف:</strong> (1-0)/2 × [0 + 2.71828] = <strong>1.35914</strong></p>
+<p><strong>سيمبسون:</strong> (1-0)/6 × [0 + 4(0.82436) + 2.71828] = <strong>1.00262</strong></p>
+<p><strong>الحل الحقيقي</strong> (بالتكامل بالتجزئة): [xeˣ - eˣ]₀¹ = 1</p>
+<p>خطأ شبه المنحرف: 0.359 | خطأ سيمبسون: 0.003</p>
+<p><strong>الخلاصة:</strong> سيمبسون أدق بكثير!</p>
+</div>
+</div>
+
+<div class="example">
+<h4>📝 مثال من الملف: القواعد المركبة (4 فترات)</h4>
+<p>∫₁² (1/x) dx</p>
+<div class="solution">
+<p>h = (2-1)/4 = 0.25</p>
+<table>
+<tr><th>i</th><th>xᵢ</th><th>f(xᵢ) = 1/xᵢ</th></tr>
+<tr><td>0</td><td>1.00</td><td>1.00000</td></tr>
+<tr><td>1</td><td>1.25</td><td>0.80000</td></tr>
+<tr><td>2</td><td>1.50</td><td>0.66667</td></tr>
+<tr><td>3</td><td>1.75</td><td>0.57143</td></tr>
+<tr><td>4</td><td>2.00</td><td>0.50000</td></tr>
+</table>
+<p><strong>شبه المنحرف المركبة:</strong></p>
+<p>= (0.25/2)[1 + 2(0.8 + 0.66667 + 0.57143) + 0.5]</p>
+<p>= 0.125 × [1 + 4.0762 + 0.5] = 0.125 × 5.5762 = <strong>0.69703</strong></p>
+<p><strong>سيمبسون المركبة:</strong></p>
+<p>= (0.25/3)[1 + 4(0.8 + 0.57143) + 2(0.66667) + 0.5]</p>
+<p>= (0.25/3) × [1 + 5.48572 + 1.33334 + 0.5] = (0.25/3) × 8.31906 = <strong>0.69326</strong></p>
+<p><strong>الحقيقي:</strong> ln(2) = 0.69315</p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 10: التكامل العددي - MATLAB
+% ============================================
+clc; clear;
+f = @(x) 1./x;
+a = 1; b = 2; n = 4;
+h = (b-a)/n;
+x = a:h:b;
+y = f(x);
+
+% شبه المنحرف المركبة
+I_trap = (h/2) * (y(1) + 2*sum(y(2:end-1)) + y(end));
+
+% سيمبسون المركبة (n زوجي)
+I_simp = (h/3) * (y(1) + 4*sum(y(2:2:end-1)) + 2*sum(y(3:2:end-1)) + y(end));
+
+I_exact = log(b) - log(a);
+
+fprintf('شبه المنحرف: %.6f (خطأ: %.6f)\n', I_trap, abs(I_exact-I_trap));
+fprintf('سيمبسون:     %.6f (خطأ: %.6f)\n', I_simp, abs(I_exact-I_simp));
+fprintf('الحقيقي:     %.6f\n', I_exact);
+</pre>
+
+<h1>المحاضرة 11: المعادلات التفاضلية العادية (IVP)</h1>
+<div class="objectives">
+<h3>🎯 الأهداف التعليمية</h3>
+<ol>
+<li>صياغة مسألة القيمة الأولية (Initial Value Problem)</li>
+<li>تطبيق طريقة أويلر (Euler's Method)</li>
+<li>تطبيق طريقة رونج-كوتا من الرتبة الرابعة (RK4)</li>
+<li>مقارنة الدقة بين الطريقتين</li>
+</ol>
+</div>
+
+<h2>11.1 مسألة القيمة الأولية (IVP)</h2>
+<div class="formula">
+أوجد y(x) إذا كان:<br><br>
+dy/dx = f(x, y) ، y(x₀) = y₀
+</div>
+
+<h2>11.2 طريقة أويلر (Euler's Method)</h2>
+<div class="formula">
+yₙ₊₁ = yₙ + h · f(xₙ, yₙ)<br><br>
+حيث: xₙ₊₁ = xₙ + h
+</div>
+<p><strong>الخطأ التراكمي:</strong> O(h) — دقة منخفضة</p>
+
+<div class="example">
+<h4>📝 مثال من الملف: أويلر</h4>
+<p>مع مقارنة أحجام خطوات مختلفة</p>
+<div class="solution">
+<table>
+<tr><th>x</th><th>h=0.1</th><th>h=0.05</th><th>h=0.01</th><th>h=0.005</th><th>الحقيقي</th></tr>
+<tr><td>0.0</td><td>2.0000</td><td>2.0000</td><td>2.0000</td><td>2.0000</td><td>2.0000</td></tr>
+<tr><td>0.1</td><td>2.2000</td><td>2.2025</td><td>2.2046</td><td>2.2049</td><td>2.2052</td></tr>
+<tr><td>0.2</td><td>2.4100</td><td>2.4155</td><td>2.4202</td><td>2.4208</td><td>2.4214</td></tr>
+<tr><td>0.3</td><td>2.6310</td><td>2.6101</td><td>2.6478</td><td>2.6489</td><td>2.6499</td></tr>
+<tr><td>0.4</td><td>2.8641</td><td>2.8775</td><td>2.8889</td><td>2.8903</td><td>2.8918</td></tr>
+<tr><td>0.5</td><td>3.1105</td><td>3.1289</td><td>3.1446</td><td>3.1467</td><td>3.1487</td></tr>
+<tr><td>1.0</td><td>4.5937</td><td>4.6533</td><td>4.7048</td><td>4.7115</td><td>4.7183</td></tr>
+</table>
+<p><strong>الخلاصة:</strong> كلما صغر حجم الخطوة h → زادت الدقة واقتربنا من الحل الحقيقي</p>
+</div>
+</div>
+
+<h2>11.3 طريقة رونج-كوتا RK4</h2>
+<div class="formula">
+yₙ₊₁ = yₙ + (h/6)(k₁ + 2k₂ + 2k₃ + k₄)<br><br>
+k₁ = f(xₙ, yₙ)<br>
+k₂ = f(xₙ + h/2, yₙ + h·k₁/2)<br>
+k₃ = f(xₙ + h/2, yₙ + h·k₂/2)<br>
+k₄ = f(xₙ + h, yₙ + h·k₃)
+</div>
+<p><strong>الخطأ التراكمي:</strong> O(h⁴) — دقة ممتازة!</p>
+
+<div class="example">
+<h4>📝 مثال من الملف: RK4</h4>
+<p>نفس المسألة بطريقة RK4</p>
+<div class="solution">
+<table>
+<tr><th>x</th><th>RK4</th><th>الحقيقي</th><th>الخطأ</th></tr>
+<tr><td>0.0</td><td>2.0000000</td><td>2.0000000</td><td>0</td></tr>
+<tr><td>0.1</td><td>2.2051708</td><td>2.2051709</td><td>10⁻⁷</td></tr>
+<tr><td>0.2</td><td>2.4214026</td><td>2.4214028</td><td>2×10⁻⁷</td></tr>
+<tr><td>0.3</td><td>2.6498585</td><td>2.6498588</td><td>3×10⁻⁷</td></tr>
+<tr><td>0.4</td><td>2.8918242</td><td>2.8918247</td><td>5×10⁻⁷</td></tr>
+<tr><td>0.5</td><td>3.1487206</td><td>3.1487213</td><td>7×10⁻⁷</td></tr>
+<tr><td>1.0</td><td>4.7182797</td><td>4.7182818</td><td>2×10⁻⁶</td></tr>
+</table>
+<p><strong>الخلاصة:</strong> RK4 أدق بكثير من أويلر بنفس حجم الخطوة!</p>
+</div>
+</div>
+
+<pre>
+% ============================================
+% المحاضرة 11: أويلر + RK4 - MATLAB
+% ============================================
+clc; clear;
+f = @(x,y) y + x;  % dy/dx = f(x,y)
+x0 = 0; y0 = 2;
+xend = 1; h = 0.1;
+x = x0:h:xend;
+n = length(x);
+
+% ─── طريقة أويلر ───
+y_euler = zeros(1,n);
+y_euler(1) = y0;
+for i = 1:n-1
+    y_euler(i+1) = y_euler(i) + h * f(x(i), y_euler(i));
+end
+
+% ─── طريقة RK4 ───
+y_rk4 = zeros(1,n);
+y_rk4(1) = y0;
+for i = 1:n-1
+    k1 = f(x(i), y_rk4(i));
+    k2 = f(x(i)+h/2, y_rk4(i) + h*k1/2);
+    k3 = f(x(i)+h/2, y_rk4(i) + h*k2/2);
+    k4 = f(x(i)+h, y_rk4(i) + h*k3);
+    y_rk4(i+1) = y_rk4(i) + (h/6)*(k1 + 2*k2 + 2*k3 + k4);
+end
+
+% ─── عرض النتائج ───
+fprintf('  x   |  أويلر   |   RK4\n');
+fprintf('──────────────────────────────\n');
+for i = 1:n
+    fprintf(' %.1f | %.7f | %.7f\n', x(i), y_euler(i), y_rk4(i));
+end
+
+% ─── رسم بياني ───
+figure;
+plot(x, y_euler, 'ro-', 'LineWidth', 2); hold on;
+plot(x, y_rk4, 'bs-', 'LineWidth', 2);
+grid on;
+xlabel('x'); ylabel('y');
+title('مقارنة طريقة أويلر و RK4');
+legend('أويلر O(h)', 'RK4 O(h^4)');
+</pre>
+
+<h1>ملخص عام للمقرر</h1>
+<div class="note">
+<h3>📌 جدول ملخص جميع الطرق العددية</h3>
+<table>
+<tr><th>المحاضرة</th><th>الموضوع</th><th>الطرق</th><th>الدقة/التقارب</th></tr>
+<tr><td>2</td><td>أنظمة خطية - مباشرة</td><td>المصفوفة العكسية، حذف غاوس</td><td>حل دقيق (مباشر)</td></tr>
+<tr><td>3</td><td>أنظمة خطية - تكرارية</td><td>جاكوبي، غاوس-سايدل</td><td>يتقارب إذا سيطرة قطرية</td></tr>
+<tr><td>4</td><td>معادلات غير خطية I</td><td>التنصيف، الوضع الكاذب</td><td>تقارب خطي (مضمون)</td></tr>
+<tr><td>5</td><td>معادلات غير خطية II</td><td>نيوتن، القاطع</td><td>تربيعي / فائق (سريع)</td></tr>
+<tr><td>6-8</td><td>الاستكمال الرياضي</td><td>عامة، لا جرانج، فروق نيوتن</td><td>دقيق عند النقاط المعطاة</td></tr>
+<tr><td>9</td><td>التفاضل العددي</td><td>أمامية، مركزية، خلفية</td><td>O(h) أو O(h²)</td></tr>
+<tr><td>10</td><td>التكامل العددي</td><td>شبه منحرف، سيمبسون</td><td>O(h²) أو O(h⁴)</td></tr>
+<tr><td>11</td><td>المعادلات التفاضلية</td><td>أويلر، RK4</td><td>O(h) أو O(h⁴)</td></tr>
+</table>
+</div>
+
+<div class="note" style="text-align:center;">
+<h3>🎓 بالتوفيق والنجاح</h3>
+<p><strong>نصيحة:</strong> احل التمارين يدويًا أولاً ثم تحقق من النتائج باستخدام MATLAB.<br>الفهم العميق للخوارزميات أهم من حفظ الصيغ.</p>
+</div>
+
+</body>
+</html>
